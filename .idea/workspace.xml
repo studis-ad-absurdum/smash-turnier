@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b99d4bdd-c143-42a6-9503-9ab5c2b44f0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Smash-Tunier.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebooks/QualiPhase-StationTiming.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generate_plan(experimental).py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generate_plan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/QualiPhase-StationTiming.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/QualiPhase-StationTiming.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_plan(experimental).py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_plan_experimental.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +57,7 @@
       <recent name="$PROJECT_DIR$/notebooks" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.generate_plan(experimental)">
+  <component name="RunManager" selected="Python.generate_plan_experimental">
     <configuration name="generate_plan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Smash-Tunier" />
       <option name="ENV_FILES" value="" />
@@ -88,7 +81,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_plan(experimental)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generate_plan_experimental" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Smash-Tunier" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,7 +95,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/generate_plan(experimental).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/generate_plan_experimental.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,7 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.generate_plan(experimental)" />
+        <item itemvalue="Python.generate_plan_experimental" />
         <item itemvalue="Python.generate_plan" />
         <item itemvalue="Python.generate_plan(no2)" />
       </list>
@@ -160,7 +153,8 @@
       <updated>1746540606194</updated>
       <workItem from="1746540607195" duration="4813000" />
       <workItem from="1746545432085" duration="742000" />
-      <workItem from="1746546177809" duration="258000" />
+      <workItem from="1746546177809" duration="885000" />
+      <workItem from="1746612093171" duration="26000" />
     </task>
     <servers />
   </component>
