@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash Scoreboard</title>
+    <style>
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            padding-bottom: 1rem;
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .table {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .control {
+            display: contents;
+            justify-content: center;
+        }
+        
+        .table > header {
+            display: contents;
+        }
+        
+        .row {
+            display: contents;
+            align-items: center;
+        }
+        
+        .row div, .row input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+        }
+        
+        .row input {
+            width: 100%;
+        }
+        
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        
+        #reset-all {
+            margin-top: 1rem;
+            background-color: #cb1a1a;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Smash Quali Scoreboard</h1>
+</header>
+
+
+
+<main>
+    <section class="table">
+        <div class="control">
+            <button id="sort-by-index">Sort by Player</button>
+            <button id="sort-by-score">Sort by Score</button>
+            <button id="add-score">Update Scores</button>
+        </div>
+        <header>
+            <div>Player</div>
+            <div>Current Score</div>
+            <div>Add Score</div>
+        </header>
+        <!-- rows inserted here -->
+    </section>
+    
+    <button id="reset-all">Reset All Scores</button>
+</main>
+
+<script>
+    (function() {
+        const STORAGE_KEY = 'smashPlayers';
+        
+        // Load or initialize
+        let players = [];
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            players = JSON.parse(stored);
+        } else {
+            for (let i = 1; i <= 50; i++) {
+                players.push({ index: i, storedValue: 0, addValue: 0 });
+            }
+            save();
+        }
+        
+        // Save to localStorage
+        function save() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+        }
+        
+        // Render
+        function renderList() {
+            const table = document.querySelector('.table');
+            // remove old rows
+            Array.from(table.querySelectorAll('.row')).forEach(el => el.remove());
+            
+            players.forEach((player, idx) => {
+                const row = document.createElement('div');
+                row.className = 'row';
+                row.innerHTML = `
+                <div>${player.index}</div>
+                <input type="number" value="${player.storedValue}" data-field="stored" data-idx="${idx}">
+                <input type="number" value="${player.addValue}" data-field="add" data-idx="${idx}">
+            `;
+                table.appendChild(row);
+            });
+            
+            // Attach listeners
+            table.querySelectorAll('input').forEach(input => {
+                input.addEventListener('change', e => {
+                    const idx = parseInt(e.target.dataset.idx, 10);
+                    const field = e.target.dataset.field;
+                    const val = parseInt(e.target.value, 10) || 0;
+                    players[idx][field + 'Value'] = field === 'add' ? val : players[idx].addValue;
+                    if (field === 'stored') players[idx].storedValue = val;
+                    if (field === 'add') players[idx].addValue = val;
+                    save();
+                });
+            });
+        }
+        
+        // Add new score
+        document.getElementById('add-score').addEventListener('click', () => {
+            players.forEach(p => {
+                p.storedValue += p.addValue;
+                p.addValue = 0; // reset
+            });
+            save();
+            renderList();
+        });
+        
+        // Sort
+        document.getElementById('sort-by-score').addEventListener('click', () => {
+            players.sort((a, b) => b.storedValue - a.storedValue);
+            save();
+            renderList();
+        });
+        document.getElementById('sort-by-index').addEventListener('click', () => {
+            players.sort((a, b) => a.index - b.index);
+            save();
+            renderList();
+        });
+        
+        renderList();
+        
+        document.getElementById('reset-all').addEventListener('click', () => {
+            players.forEach(p => {
+                p.storedValue = 0;
+                p.addValue = 0;
+            });
+            save();
+            renderList();
+        });
+    })();
+</script>
+</body>
+</html>
